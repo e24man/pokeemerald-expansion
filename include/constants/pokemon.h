@@ -93,7 +93,7 @@
 #define MAX_STAT_STAGE    12
 
 // Shiny odds
-#define SHINY_ODDS 8 // Actual probability is SHINY_ODDS/65536
+#define SHINY_ODDS 32 // Actual probability is SHINY_ODDS/65536
 
 // Ribbon IDs used by TV and Pokénav
 #define CHAMPION_RIBBON       0
@@ -364,7 +364,7 @@ enum EvoSpinDirections {
 #if P_LEGENDARY_PERFECT_IVS >= GEN_6
 #define LEGENDARY_PERFECT_IV_COUNT 3
 #else
-#define LEGENDARY_PERFECT_IV_COUNT 0
+#define LEGENDARY_PERFECT_IV_COUNT 3
 #endif
 
 #endif // GUARD_CONSTANTS_POKEMON_H

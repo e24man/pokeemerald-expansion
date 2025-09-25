@@ -17,6 +17,54 @@ GraniteCave_1F_EventScript_ReceivedFlash::
 	release
 	end
 
+GraniteCave_1F_EventScript_Grunt::
+	lockall
+	playbgm MUS_ENCOUNTER_MAGMA, FALSE
+	applymovement LOCALID_GRANITE_GRUNT, GraniteCave_1F_Movement_Grunt_Intro
+	waitmovement 0 
+	applymovement LOCALID_PLAYER, Common_Movement_WalkInPlaceFasterLeft
+	waitmovement 0
+	msgbox GraniteCave_1F_Text_WhatAreYouDoingHere, MSGBOX_DEFAULT
+	trainerbattle_no_intro TRAINER_CAMRON, PetalburgWoods_Text_YoureKiddingMe
+	msgbox GraniteCave_1F_Text_HowDefeatSteven, MSGBOX_DEFAULT
+	applymovement LOCALID_PLAYER, GraniteCave_1F_Movement_OutOfWay
+	applymovement LOCALID_GRANITE_GRUNT, GraniteCave_1F_Movement_Grunt_Defeated
+	goto GraniteCave_1F_EventScript_Grunt_Defeated
+	end
+	
+GraniteCave_1F_EventScript_Grunt_Defeated::
+	removeobject LOCALID_GRANITE_GRUNT
+	setvar VAR_GRANITE_GRUNT, 1
+	setflag FLAG_HIDE_GRANITE_GRUNT
+	releaseall
+	end
+
+GraniteCave_1F_Movement_Grunt_Intro:
+	walk_fast_right
+	walk_fast_right
+	walk_fast_right
+	walk_fast_right
+
+GraniteCave_1F_Movement_OutOfWay:
+	walk_fast_right
+	delay_4
+	face_down
+
+GraniteCave_1F_Movement_Grunt_Defeated:
+	walk_fast_right
+	walk_fast_right
+	walk_fast_right
+	walk_fast_right
+	walk_fast_right
+	walk_fast_right
+	walk_fast_down
+	walk_fast_down
+	walk_fast_down
+	walk_fast_right
+	walk_fast_right
+	walk_fast_right
+	walk_fast_right
+
 GraniteCave_1F_Text_GetsDarkAheadHereYouGo:
 	.string "Hey, you.\n"
 	.string "It gets awfully dark ahead.\l"
@@ -37,3 +85,21 @@ GraniteCave_1F_Text_ExplainFlash:
 	.string "But, to use it, you need the GYM BADGE\n"
 	.string "from DEWFORD's POKéMON GYM.$"
 
+GraniteCave_1F_Text_WhatAreYouDoingHere:
+	.string "What are you doing here?\p"
+	.string "After you bested me in Petalburg Woods\n"
+	.string "I've been looking for a way to steal\l"
+	.string "something else for TEAM MAGMA\p"
+	.string "I heard that STEVEN was here.\p"
+	.string "With all those shiny rocks he collects\n"
+	.string "he seems like a perfect target.\p"
+	.string "The BOSS will be so proud of me when I\n"
+	.string "come back with a shiny Ruby, Sapphire, or\l"
+	.string "even an Emerald!\p"
+	.string "But first, I'll have to deal with you!make$"
+
+GraniteCave_1F_Text_HowDefeatSteven:
+	.string "I can't believe this. If I cannot beat\n"
+	.string "a puny kid like you with these stronger\l"
+	.string "POKéMON how could I steal from STEVEN?\p"
+	.string "I'll get my revenge on you, eventually."

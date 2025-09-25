@@ -361,8 +361,8 @@
     },
     {
       "type": "sign",
-      "x": 29,
-      "y": 10,
+      "x": 24,
+      "y": 5,
       "elevation": 3,
       "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
       "script": "Route109_EventScript_TrainerTipsSign"

@@ -348,6 +348,29 @@ Route116_EventScript_Johnson::
 	msgbox Route116_Text_JohnsonPostBattle, MSGBOX_AUTOCLOSE
 	end
 
+Route116_EventScript_Sidney::
+	lockall
+	applymovement LOCALID_SIDNEY_116, Common_Movement_WalkInPlaceFasterRight
+	applymovement LOCALID_SIDNEY_116, Common_Movement_ExclamationMark
+    msgbox Route116_Text_Sidney, MSGBOX_DEFAULT
+    fadescreen FADE_TO_BLACK
+	setflag FLAG_SIDNEY_116
+    removeobject LOCALID_SIDNEY_116
+	setvar VAR_SIDNEY_116, 2
+	clearflag FLAG_HIDE_TUNNEL_BLOCKER
+	delay 15
+	fadescreen FADE_FROM_BLACK
+    releaseall
+    end
+
+Route116_EventScript_MGrunt::
+	lock
+	faceplayer
+	msgbox Route116_Text_ScramKid, MSGBOX_DEFAULT
+	applymovement LOCALID_GRUNT_116, Common_Movement_FaceOriginalDirection
+	release
+	end
+
 Route116_Text_ScoundrelMadeOffWithPeeko:
 	.string "Ohhh, what am I to do?\p"
 	.string "We were on our walk, PEEKO and I, when\n"
@@ -468,3 +491,17 @@ Route116_Text_TrainerTipsBagHasPockets:
 	.string "No TRAINER can afford to be without\n"
 	.string "a BAG of their own.$"
 
+Route116_Text_Sidney:
+	.string "Hey kid, are you looking for me?\p"
+	.string "Sorry I wandered off from the gym\n"
+	.string "again. It gets boring when there\l"
+	.string "aren't any challengers.\l"	
+	.string "I'll return to Rustboro to wait\n"
+	.string "for your challenge.$"
+
+Route116_Text_ScramKid:
+	.string "Scram kid, I'm planning my escape\n"
+	.string "route for my next heist.\p"
+	.string "Just because you beat me in\n"
+	.string "Petalburg Woods doesn't make you\l"
+	.string "some sort of hero.$"

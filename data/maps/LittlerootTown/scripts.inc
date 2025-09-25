@@ -897,7 +897,13 @@ LittlerootTown_EventScript_GiveRunningShoes::
 	playfanfare MUS_OBTAIN_ITEM
 	message LittlerootTown_Text_SwitchShoesWithRunningShoes
 	waitfanfare
-	setflag FLAG_RECEIVED_RUNNING_SHOES
+	giveitem ITEM_ORAN_BERRY
+	giveitem ITEM_CHERI_BERRY
+	giveitem ITEM_PECHA_BERRY
+	giveitem ITEM_CHESTO_BERRY
+	giveitem ITEM_RAWST_BERRY
+	giveitem ITEM_ASPEAR_BERRY
+	giveitem ITEM_PERSIM_BERRY
 	msgbox LittlerootTown_Text_ExplainRunningShoes, MSGBOX_DEFAULT
 	msgbox LittlerootTown_Text_ComeHomeIfAnythingHappens, MSGBOX_DEFAULT
 	closemessage
@@ -927,20 +933,19 @@ LittlerootTown_Text_WearTheseRunningShoes:
 	.string "You're your father's child, all right.\n"
 	.string "You look good together with POKéMON!\p"
 	.string "Here, honey! If you're going out on an\n"
-	.string "adventure, wear these RUNNING SHOES.\p"
-	.string "They'll put a zip in your step!$"
+	.string "adventure, take these BERRIES.\p"
+	.string "I grew them myself!$"
 
 LittlerootTown_Text_SwitchShoesWithRunningShoes:
-	.string "{PLAYER} switched shoes with the\n"
-	.string "RUNNING SHOES.$"
+	.string "{PLAYER} took the berries$"
 
 LittlerootTown_Text_ExplainRunningShoes:
-	.string "MOM: {PLAYER}, those shoes came with\n"
-	.string "instructions.\p"
-	.string "“Press the B Button while wearing these\n"
-	.string "RUNNING SHOES to run extra-fast!\p"
-	.string "“Slip on these RUNNING SHOES and race\n"
-	.string "in the great outdoors!”$"
+	.string "MOM: {PLAYER}, berries used to be\n"
+	.string "plentiful in HOENN.\p"
+	.string "Too many trainers took berries without\n"
+	.string "replanting them. Now all the berry\p"
+	.string "trees are blocked from trainers, and\n"
+	.string "berries are hard to come by”$"
 
 LittlerootTown_Text_ComeHomeIfAnythingHappens:
 	.string "… … … … … … … …\n"

@@ -29,6 +29,16 @@ PetalburgWoods_EventScript_DevonResearcherLeft::
 	trainerbattle_no_intro TRAINER_GRUNT_PETALBURG_WOODS, PetalburgWoods_Text_YoureKiddingMe
 	applymovement LOCALID_PETALBURG_WOODS_GRUNT, PetalburgWoods_Movement_AquaBackOff
 	waitmovement 0
+	applymovement LOCALID_PETALBURG_WOODS_GRUNT_2, PetalburgWoods_Movement_AquaEntrance
+	waitmovement 0
+	msgbox PetalburgWoods_Text_AmbushTheAmbush, MSGBOX_DEFAULT
+	closemessage
+	applymovement LOCALID_PETALBURG_WOODS_GRUNT_2, PetalburgWoods_Movement_AquaApproachResearcherLeft
+	waitmovement 0
+	msgbox PetalburgWoods_Text_CantBeatKid, MSGBOX_DEFAULT
+	trainerbattle_no_intro TRAINER_DARRIN, PetalburgWoods_Text_YoureKiddingMe_2
+	applymovement LOCALID_PETALBURG_WOODS_GRUNT_2, PetalburgWoods_Movement_AquaBackOff
+	waitmovement 0
 	call PetalburgWoods_EventScript_DevonResearcherPostBattle
 	applymovement LOCALID_PLAYER, PetalburgWoods_Movement_WatchResearcherLeave
 	applymovement LOCALID_PETALBURG_WOODS_DEVON_EMPLOYEE, PetalburgWoods_Movement_DevonResearcherExitLeft
@@ -65,6 +75,16 @@ PetalburgWoods_EventScript_DevonResearcherRight::
 	trainerbattle_no_intro TRAINER_GRUNT_PETALBURG_WOODS, PetalburgWoods_Text_YoureKiddingMe
 	applymovement LOCALID_PETALBURG_WOODS_GRUNT, PetalburgWoods_Movement_AquaBackOff
 	waitmovement 0
+	applymovement LOCALID_PETALBURG_WOODS_GRUNT_2, PetalburgWoods_Movement_AquaEntrance
+	waitmovement 0
+	msgbox PetalburgWoods_Text_AmbushTheAmbush, MSGBOX_DEFAULT
+	closemessage
+	applymovement LOCALID_PETALBURG_WOODS_GRUNT_2, PetalburgWoods_Movement_AquaApproachResearcherRight
+	waitmovement 0
+	msgbox PetalburgWoods_Text_CantBeatKid, MSGBOX_DEFAULT
+	trainerbattle_no_intro TRAINER_DARRIN, PetalburgWoods_Text_YoureKiddingMe_2
+	applymovement LOCALID_PETALBURG_WOODS_GRUNT_2, PetalburgWoods_Movement_AquaBackOff
+	waitmovement 0	
 	call PetalburgWoods_EventScript_DevonResearcherPostBattle
 	applymovement LOCALID_PLAYER, PetalburgWoods_Movement_WatchResearcherLeave
 	applymovement LOCALID_PETALBURG_WOODS_DEVON_EMPLOYEE, PetalburgWoods_Movement_DevonResearcherExitRight
@@ -84,11 +104,15 @@ PetalburgWoods_EventScript_DevonResearcherPostBattle::
 	closemessage
 	applymovement LOCALID_PETALBURG_WOODS_GRUNT, PetalburgWoods_Movement_AquaRunAway
 	waitmovement 0
+	msgbox PetalburgWoods_Text_YouveGotSomeNerve_2, MSGBOX_DEFAULT
+	applymovement LOCALID_PETALBURG_WOODS_GRUNT_2, PetalburgWoods_Movement_AquaRunAway
+	waitmovement 0
 	removeobject LOCALID_PETALBURG_WOODS_GRUNT
+	removeobject LOCALID_PETALBURG_WOODS_GRUNT_2
 	applymovement LOCALID_PLAYER, Common_Movement_WalkInPlaceFasterDown
 	waitmovement 0
 	msgbox PetalburgWoods_Text_ThatWasAwfullyClose, MSGBOX_DEFAULT
-	giveitem ITEM_GREAT_BALL
+	giveitem ITEM_QUICK_BALL, 5
 	goto_if_eq VAR_RESULT, FALSE, PetalburgWoods_EventScript_BagFull
 	goto PetalburgWoods_EventScript_DevonResearcherFinish
 	end
@@ -109,6 +133,9 @@ PetalburgWoods_EventScript_DevonResearcherFinish::
 PetalburgWoods_EventScript_RemoveDevonResearcher::
 	removeobject LOCALID_PETALBURG_WOODS_DEVON_EMPLOYEE
 	setvar VAR_PETALBURG_WOODS_STATE, 1
+	setvar VAR_SIDNEY_116, 1
+	setflag FLAG_HIDE_TUNNEL_BLOCKER
+	setflag WOODS_LEVEL_CAP
 	releaseall
 	end
 
@@ -321,7 +348,7 @@ PetalburgWoods_Text_NotAOneToBeFound:
 
 PetalburgWoods_Text_HaveYouSeenShroomish:
 	.string "Hello, have you seen any POKéMON\n"
-	.string "called SHROOMISH around here?\p"
+	.string "called COTTONEE around here?\p"
 	.string "I really love that POKéMON.$"
 
 PetalburgWoods_Text_IWasGoingToAmbushYou:
@@ -364,8 +391,8 @@ PetalburgWoods_Text_ThatWasAwfullyClose:
 	.string "That was awfully close!\p"
 	.string "Thanks to you, he didn't rob me of\n"
 	.string "these important papers.\p"
-	.string "I know, I'll give you a GREAT BALL as\n"
-	.string "my thanks!$"
+	.string "I know, I'll give you these QUICK BALLS\n"
+	.string "as my thanks!$"
 
 PetalburgWoods_Text_TeamAquaAfterSomethingInRustboro:
 	.string "Didn't that TEAM AQUA thug say\n"
@@ -378,7 +405,7 @@ PetalburgWoods_Text_ICantBeWastingTime:
 
 PetalburgWoods_Text_YoureLoadedWithItems:
 	.string "You're loaded with items.\n"
-	.string "I can't give you this GREAT BALL.$"
+	.string "I can't give you these QUICK BALLS.$"
 
 PetalburgWoods_Text_GoBugPokemonTeam:
 	.string "I caught a whole bunch of POKéMON!\p"
@@ -471,3 +498,19 @@ PetalburgWoods_Text_TrainerTipsPP:
 	.string "If a POKéMON runs out of PP, it must be\n"
 	.string "taken to a POKéMON CENTER.$"
 
+PetalburgWoods_Text_YoureKiddingMe_2:
+	.string "What? this kid is actually strong.$"
+
+PetalburgWoods_Text_AmbushTheAmbush:
+	.string "I've been waiting to ambush TEAM AQUA,\n"
+	.string "but their crummy GRUNTS cant even\l"
+	.string "complete a simple ambush!$"
+
+PetalburgWoods_Text_CantBeatKid:
+	.string "Is TEAM AQUA really unable to defeat\n"
+	.string "a mear child? I'll show you that\l"
+	.string "TEAM MAGMA are the superior battlers!$"
+
+PetalburgWoods_Text_YouveGotSomeNerve_2:
+	.string "Even if you defeated me too, remember\n"
+	.string "TEAM MAGMA are still superior.$"

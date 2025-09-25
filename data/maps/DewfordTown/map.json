@@ -54,8 +54,8 @@
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_FISHERMAN",
-      "x": 12,
-      "y": 14,
+      "x": 18,
+      "y": 4,
       "elevation": 3,
       "movement_type": "MOVEMENT_TYPE_WANDER_LEFT_AND_RIGHT",
       "movement_range_x": 1,
@@ -91,6 +91,19 @@
       "trainer_sight_or_berry_tree_id": "0",
       "script": "DewfordTown_EventScript_TrendyPhraseBoy",
       "flag": "0"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_SPECIES(CRABRAWLER)",
+      "x": 14,
+      "y": 5,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_FACE_DOWN_AND_LEFT",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "NULL",
+      "flag": "0"
     }
   ],
   "warp_events": [
@@ -116,8 +129,8 @@
       "dest_warp_id": "0"
     },
     {
-      "x": 17,
-      "y": 14,
+      "x": 15,
+      "y": 2,
       "elevation": 0,
       "dest_map": "MAP_DEWFORD_TOWN_HOUSE1",
       "dest_warp_id": "0"
